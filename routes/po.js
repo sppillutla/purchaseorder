@@ -9,6 +9,7 @@ exports.get = function(poId,callback) {
     pool.pool.getConnection(function(err,connection){
         if (err) {
           // connection.release();
+         console.log("error in connection " + err);
          return callback({"code" : 100, "status" : "Error in connection database"},null);
         }   
 
@@ -83,8 +84,10 @@ exports.post = function(po,callback) {
         console.log("Values supplied are " + JSON.stringify(po));
         
         connection.query(sqlQuery,po,function(err,rows){
+            console.log("err is " + err);
             connection.release();
             if(!err) {
+            	console.log("rows are " + rows);
                 return callback(null,rows);
             }           
         });

@@ -1,1 +1,14 @@
 <h1> PO </h1>
+<div ng-repeat="po in pos">
+	<span> po number is {{po.ponumber}} </span>
+	<span> po date is {{po.podate}} </span>
+	<span> po vendor is {{po.vendor}} </span>
+</div>
+<button id="getPO" ng-click="getPO()">getPO</button>
+
+<div>
+	<input id="ponumberInput" ng-model="ponumber" placeholder="ponumber"> </input>
+	<input id="podateInput" ng-model="podate" placeholder="podate"> </input>
+	<input id="povendorInput" ng-model="povendor" placeholder="povendor"> </input>
+	<button id="submitpo" ng-click="submitPO()">submitPO</button>
+</div>

@@ -20,7 +20,7 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 //app.use(favicon(__dirname + '/public/images/favicon.png'));
 app.use(logger('dev'));
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.bodyParser());
 app.use(methodOverride('_method'));
 app.use(require('stylus').middleware(__dirname + '/public'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -36,7 +36,7 @@ app.get('/purchaseorder',function(req, res) {
             res.sendfile(__dirname + '/public/purchaseorder.html');
         });
 
-app.get('/purchaseorder/app/v1/po',function(req, res) {
+app.get('/purchaseorder/api/v1/po',function(req, res) {
             // list all charge
             po.get(null,function(error, docs){
                 if(error) {
@@ -47,7 +47,7 @@ app.get('/purchaseorder/app/v1/po',function(req, res) {
             });
         });
 
-app.get('/purchaseorder/app/v1/product',function(req, res) {
+app.get('/purchaseorder/api/v1/product',function(req, res) {
             // list all charge
             product.get(null,function(error, docs){
                 if(error) {
