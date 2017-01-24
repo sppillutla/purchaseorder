@@ -1,6 +1,5 @@
 'use strict';
 angular.module('poApp', [
-	'ngCookies',
 	'ui.router' //this is the dependency on ui.router module,
 ]);
 angular.module('poApp').config(function($stateProvider, $urlRouterProvider, $locationProvider) {

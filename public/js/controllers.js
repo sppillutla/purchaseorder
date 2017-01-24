@@ -3,10 +3,11 @@
 /* Controllers */
 
 angular.module('poApp').
-controller('PoController', function($timeout,$filter,$cookies,$cookieStore,$scope, $http,poFactoryExample,SubmitPOService,version,$window) {
+controller('PoController', function($rootScope,$timeout,$filter,$scope, $http,poFactoryExample,SubmitPOService,version,$window) {
 
  
 	$scope.getPO = function(){
+		console.log("rootScope.globalusername is " + $rootScope.globalusername); 
 		$scope.username = "john";
 		$scope.username = $filter('uppercase')($scope.username);
 
@@ -19,15 +20,6 @@ controller('PoController', function($timeout,$filter,$cookies,$cookieStore,$scop
 		});
              console.log("scope.pos after is " + $scope.pos);
              console.log("value version is " + version);
-$cookieStore.put('yourCookies', 'your first cookie');  
-// Reading a cookie  
-var yourCookie = $cookieStore.get('yourCookies');  
-             console.log("value of yourcookies is " + yourCookie);
-// Removing a cookie  
-             console.log("removing yourcookies " );
-$cookieStore.remove('yourCookies');  
-var yourCookie1 = $cookieStore.get('yourCookies');  
-             console.log("value of yourcookies is " + yourCookie1);
 	}
 	
 $scope.promise = $timeout($scope.getPO, 1000);
@@ -51,8 +43,8 @@ $scope.promise = $timeout($scope.getPO, 1000);
 });
 
 
-angular.module('poApp').controller('ProductController', function($scope,$http) {
-	
+angular.module('poApp').controller('ProductController', function($rootScope,$scope,$http) {
+$rootScope.globalusername = 'John';	
 	$scope.getProduct = function(){
 
 		$http.get('/purchaseorder/api/v1/product').

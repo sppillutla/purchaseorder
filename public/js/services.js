@@ -9,8 +9,10 @@ angular.module('poApp')
 
     return {
         getPO: function (cb) {
-$http.get('/purchaseorder/api/v1/po').
-                        success(function(data, status, headers, config) {
+$http({
+  method: 'GET',
+  url: 'http://localhost:3000/purchaseorder/api/v1/po'
+}).then(function(data) {
                         console.log("data is " + data);
                         console.log("json parse of data is " + JSON.stringify(data));
                         return cb(null,data);
