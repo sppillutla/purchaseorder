@@ -5,6 +5,11 @@
 angular.module('poApp').
 controller('PoController', function($rootScope,$timeout,$filter,$scope, $http,poFactoryExample,SubmitPOService,version,$window) {
 
+ $scope.newFunc = function(newValue) {
+         $scope.var1 = 10;
+         $scope.var2 = "Value of newValue is " + newValue; 
+}
+
  
 	$scope.getPO = function(){
 		console.log("rootScope.globalusername is " + $rootScope.globalusername); 
